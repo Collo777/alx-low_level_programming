@@ -1,22 +1,25 @@
-#include <stdlib.h>
+#include "main.h"
 #include <stdio.h>
+#include <stdlib.h>
 
 /**
- * malloc_checked - fuction that allocates memory and also checks if sucessful
- * @b: size of memory to allocate.
+ * simple_print_buffer - prints buffer in hexa
+ * @buffer: the address of memory to print
+ * @size: the size of the memory to print
  *
- * Return: pointer to memory, Else if return exit status 98.
+ * Return: Nothing.
  */
-void *malloc_checked(unsigned int b)
+char *create_array(unsigned int size, char c)
 {
-	void *ptr;
+  unsigned int i;
 
-	ptr = malloc(b);
-	if (ptr == NULL)
-	{
-		free(ptr);
-		exit(98);
-	}
-	return (ptr);
+  if (size == 0)
+      return (NULL);
+
+  char *s = (char*)malloc(size * sizeof(char));
+
+  for (i = 0; i < size; i++)
+    s[i] = c;
+
+  return (s);
 }
-
